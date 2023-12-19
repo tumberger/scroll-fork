@@ -11,6 +11,7 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/scroll-tech/go-ethereum/common"
+	"github.com/scroll-tech/go-ethereum/log"
 	"github.com/smartystreets/goconvey/convey"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
@@ -68,6 +69,8 @@ func testL2RelayerProcessPendingBatches(t *testing.T) {
 	batchOrm := orm.NewBatch(db)
 	batch, err := batchOrm.InsertBatch(context.Background(), []*types.Chunk{chunk1, chunk2}, batchMeta)
 	assert.NoError(t, err)
+
+	log.Info("PROCESSING PENDING BATCHES")
 
 	relayer.ProcessPendingBatches()
 
