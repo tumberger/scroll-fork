@@ -381,6 +381,8 @@ func (r *Layer2Relayer) ProcessPendingBatches() {
 			return
 		}
 
+		fmt.Printf("\033[31mOBTAINED CALLDATA - Size: %d bytes\033[0m\n", len(calldata))
+
 		// send transaction
 		txID := batch.Hash + "-commit"
 		fallbackGasLimit := uint64(float64(batch.TotalL1CommitGas) * r.cfg.L1CommitGasLimitMultiplier)

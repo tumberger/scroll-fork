@@ -70,7 +70,7 @@ func testL2RelayerProcessPendingBatches(t *testing.T) {
 	batch, err := batchOrm.InsertBatch(context.Background(), []*types.Chunk{chunk1, chunk2}, batchMeta)
 	assert.NoError(t, err)
 
-	fmt.Println("THIS IS THE LOG PROCESSING PENDING BATCHES")
+	fmt.Println("\033[31m STARTING TO PROCESS PENDING BATCHES\033[0m")
 
 	relayer.ProcessPendingBatches()
 
